@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-function GuessInput({ addGuess = () => {} }) {
+function GuessInput({ addGuess = () => {}, disabled }) {
   const [tentativeGuess, setTentativeGuess] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (disabled) return;
 
     addGuess(tentativeGuess);
 
@@ -19,6 +21,7 @@ function GuessInput({ addGuess = () => {} }) {
         type='text'
         value={tentativeGuess}
         required
+        disabled={disabled}
         minLength={5}
         maxLength={5}
         pattern='[a-zA-Z]{5}'
