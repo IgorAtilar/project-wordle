@@ -1,6 +1,6 @@
 import Banner from '../Banner';
 
-function WonBanner({ numOfGuesses = 0 }) {
+function WonBanner({ numOfGuesses = 0, onGameRestart = () => {} }) {
   return (
     <Banner status='happy'>
       <p>
@@ -10,6 +10,9 @@ function WonBanner({ numOfGuesses = 0 }) {
         </strong>
         .
       </p>
+      <button onClick={onGameRestart} className='restart-btn'>
+        Restart
+      </button>
     </Banner>
   );
 }
